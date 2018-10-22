@@ -4,13 +4,20 @@ var Movie = require('../models/Movie')
 function label(title) {
 	return m('label.label', title)
 }
+
 module.exports = {
-	oninit: function (vnode) { Movie.load(vnode.attrs.id) },
+	oninit: function (vnode) {
+		if (vnode.attrs.id) {
+			Movie.load(vnode.attrs.id)
+		} else {
+			Movie.loadDefault()
+		}
+	},
 	view: function () {
 		return m('form', {
 			onsubmit: function (e) {
 				e.preventDefault()
-				Movie.save()
+				if (Movie.current.id) Movie.save()
 			}
 		}, [
 			label('Title'),

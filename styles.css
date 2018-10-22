@@ -32,6 +32,11 @@ body, .input, .button {
     display:block;
     margin:0 0 5px;
 }
+.layout {
+    margin:10px auto;
+    max-width:1000px;
+}
+.menu {margin:0 0 30px;}
 
 .movie-list {
     list-style:none;

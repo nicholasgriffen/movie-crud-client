@@ -36,6 +36,15 @@ var Movie = {
 			url: `${url}/${Movie.current.id}`,
 			data: Movie.current,
 		})
+	},
+
+	loadDefault: function () {
+		Movie.current = {
+			title: 'Title',
+			director: 'Director',
+			year: 2018,
+			rating: 5
+		}
 	}
 }
 
