@@ -17,7 +17,11 @@ module.exports = {
 		return m('form', {
 			onsubmit: function (e) {
 				e.preventDefault()
-				if (Movie.current.id) Movie.save()
+				if (Movie.current.id) {
+					Movie.save()
+					return
+				}
+				Movie.create()
 			}
 		}, [
 			label('Title'),

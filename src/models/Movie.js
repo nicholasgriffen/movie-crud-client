@@ -38,6 +38,14 @@ var Movie = {
 		})
 	},
 
+	create: function () {
+		return m.request({
+			method: 'POST',
+			url,
+			data: Movie.current,
+		})
+	},
+
 	loadDefault: function () {
 		Movie.current = {
 			title: 'Title',
