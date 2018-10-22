@@ -1,3 +1,4 @@
-import m from "mithril";
+const m = require('mithril')
+const root = document.body
 
-m.render(document.body, "Welcome to Digijan")
+m.render(root, m("h1", { class: "title" }, "Not Roger Ebert"))

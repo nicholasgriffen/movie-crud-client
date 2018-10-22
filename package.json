@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "webpack -p",
+    "build": "webpack src/index.js --output bin/app.js -p",
     "start": "webpack src/index.js --output bin/app.js -d --watch",
     "test": "mocha --watch"
   },
