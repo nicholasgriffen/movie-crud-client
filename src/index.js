@@ -1,5 +1,11 @@
 var m = require('mithril')
+
 var MovieList = require('./views/MovieList')
+var MovieForm = require('./views/MovieForm')
+
 var root = document.body
 
-m.mount(root, MovieList)
+m.route(root, '/list', {
+	'/list': MovieList,
+	'/edit/:id': MovieForm
+})
