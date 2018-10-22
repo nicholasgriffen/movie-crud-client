@@ -1,4 +1,5 @@
-const m = require('mithril')
-const root = document.body
+var m = require('mithril')
+var MovieList = require('./views/MovieList')
+var root = document.body
 
-m.render(root, m("h1", { class: "title" }, "Not Roger Ebert"))
+m.mount(root, MovieList)
