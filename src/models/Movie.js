@@ -1,14 +1,10 @@
-
-/*title 
-director
-year
-rating
-poster url
-*/
 var url = 'http://localhost:3030/movies'
 var m = require('mithril')
+
 var Movie = {
 	list: [],
+	current: {},
+
 	loadList: function () {
 		return m.request({
 			method: 'GET',
@@ -19,17 +15,15 @@ var Movie = {
 			})
 	},
 
-	current: {},
 	load: function (id) {
 		return m.request({
 			method: 'GET',
 			url: `${url}/${id}`,
 		})
 			.then(function (result) {
-				console.log(result)
-				Movie.current = result.movie
+				Movie.current = result.movie || Movie.default
 			})
-			.catch(() => Movie.loadDefault())
+			.catch(() => Movie.default)
 	},
 
 	save: function () {
@@ -48,13 +42,14 @@ var Movie = {
 		})
 	},
 
-	loadDefault: function () {
+	get default() {
 		Movie.current = {
 			title: 'Title',
 			director: 'Director',
 			year: 2018,
 			rating: 5
 		}
+		return Movie.current
 	}
 }
 

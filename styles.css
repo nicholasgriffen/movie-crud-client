@@ -52,6 +52,3 @@ body, .input, .button {
     padding:8px 15px;
     text-decoration:none;
 }
-.movie-list-item:hover {
-    text-decoration:underline;
-}

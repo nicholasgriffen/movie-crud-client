@@ -6,7 +6,7 @@ module.exports = {
 	oninit: Movie.loadList,
 	view: function () {
 		return m('.movie-list', Movie.list.map(movie => {
-			return m('a.movie-list-item', { href: `/edit/${movie.id}`, oncreate: m.route.link }, `Title: ${movie.title}, Year: ${movie.year} Director: ${movie.director}`)
+			return m('.movie-list-item', `Title: ${movie.title}, Year: ${movie.year} Director: ${movie.director}`, m(`a.danger[href='/edit/${movie.id}']`, { oncreate: m.route.link }, 'Edit'))
 		}))
 	}
 }

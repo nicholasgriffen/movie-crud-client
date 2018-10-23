@@ -10,14 +10,15 @@ module.exports = {
 			onsubmit: function (e) {
 				e.preventDefault()
 				if (m.route.get().match(/edit/)) {
-					console.log('save', Movie.current)
-					console.log(m.route.get())
 					Movie.save()
-					return
+					m.route.set('/show/' + Movie.current.id)
+				} else {
+					Movie.create()
+						.then(record => {
+							Movie.current.id = record.movie.id
+							m.route.set('/show/' + Movie.current.id)
+						})
 				}
-				console.log(Movie.current)
-				console.log(m.route.get())
-				Movie.create()
 			}
 		}, [
 			m('label.label', 'Title'),
