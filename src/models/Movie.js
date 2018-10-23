@@ -26,8 +26,10 @@ var Movie = {
 			url: `${url}/${id}`,
 		})
 			.then(function (result) {
+				console.log(result)
 				Movie.current = result.movie
 			})
+			.catch(() => Movie.loadDefault())
 	},
 
 	save: function () {
