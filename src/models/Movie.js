@@ -4,7 +4,12 @@ var m = require('mithril')
 var Movie = {
 	list: [],
 	current: {},
-
+	default: {
+		title: 'Title',
+		director: 'Director',
+		year: 2018,
+		rating: 5
+	},
 	loadList: function () {
 		return m.request({
 			method: 'GET',
@@ -21,35 +26,32 @@ var Movie = {
 			url: `${url}/${id}`,
 		})
 			.then(function (result) {
-				Movie.current = result.movie || Movie.default
+				if (result.movie) Movie.current = result.movie
 			})
 			.catch(() => Movie.default)
 	},
 
-	save: function () {
+	save: function (body) {
 		return m.request({
 			method: 'PUT',
-			url: `${url}/${Movie.current.id}`,
-			data: Movie.current,
+			url: `${url}/${body.id}`,
+			data: body,
 		})
 	},
 
-	create: function () {
+	create: function (body) {
 		return m.request({
 			method: 'POST',
 			url,
-			data: Movie.current,
+			data: body,
 		})
 	},
 
-	get default() {
-		Movie.current = {
-			title: 'Title',
-			director: 'Director',
-			year: 2018,
-			rating: 5
-		}
-		return Movie.current
+	delete: function (id) {
+		return m.request({
+			method: 'DELETE',
+			url: `${url}/${id}`
+		})
 	}
 }
 

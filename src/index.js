@@ -1,5 +1,6 @@
 var m = require('mithril')
 
+var Movie = require('./models/Movie')
 var List = require('./views/MovieList')
 var Form = require('./views/MovieForm')
 var Layout = require('./views/Layout')
@@ -24,6 +25,12 @@ m.route(document.body, '/list', {
 	'/show/:id': {
 		render: function (vnode) {
 			return m(Layout, m(Splash, vnode.attrs))
+		}
+	},
+	'/delete/:id': {
+		onmatch: function (vnode) {
+			Movie.delete(vnode.id)
+				.then(() => m.route.set('/list'))
 		}
 	}
 })

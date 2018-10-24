@@ -3,22 +3,27 @@ var Movie = require('../models/Movie')
 
 module.exports = {
 	oninit: function (vnode) {
-		Movie.load(vnode.attrs.id)
+		if (vnode.attrs.id) {
+			return Movie.load(vnode.attrs.id)
+		}
+		Movie.current = Movie.default
+	},
+	onupdate: function () {
+		if (m.route.get().match(/create/)) {
+			Movie.current = Movie.default
+		}
+		m.redraw()
 	},
 	view: function () {
 		return m('form', {
 			onsubmit: function (e) {
 				e.preventDefault()
 				if (m.route.get().match(/edit/)) {
-					Movie.save()
-					m.route.set('/show/' + Movie.current.id)
-				} else {
-					Movie.create()
-						.then(record => {
-							Movie.current.id = record.movie.id
-							m.route.set('/show/' + Movie.current.id)
-						})
+					return Movie.save(Movie.current)
+						.then(record => m.route.set('/show/' + record.movie.id))
 				}
+				return Movie.create(Movie.current)
+					.then(record => m.route.set('/show/' + record.movie.id))
 			}
 		}, [
 			m('label.label', 'Title'),
@@ -38,14 +43,14 @@ module.exports = {
 			m('label.label', 'Year'),
 			m('input.input[type=text][placeholder="2018"]', {
 				oninput: m.withAttr('value', function (value) {
-					Movie.current.year = value
+					Movie.current.year = +value
 				}),
 				value: Movie.current.year
 			}),
 			m('label.label', 'My Rating'),
 			m('input.input[type=text][placeholder="5"]', {
 				oninput: m.withAttr('value', function (value) {
-					Movie.current.rating = value
+					Movie.current.rating = +value
 				}),
 				value: Movie.current.rating
 			}),
