@@ -6,7 +6,12 @@ var Form = require('./views/MovieForm')
 var Layout = require('./views/Layout')
 var Splash = require('./views/MovieSplash')
 
-m.route(document.body, '/list', {
+m.route(document.body, '/', {
+	'/': {
+		render: function () {
+			return m(Layout)
+		}
+	},
 	'/list': {
 		render: function () {
 			return m(Layout, m(List))
@@ -29,8 +34,11 @@ m.route(document.body, '/list', {
 	},
 	'/delete/:id': {
 		onmatch: function (vnode) {
-			Movie.delete(vnode.id)
-				.then(() => m.route.set('/list'))
+			return Movie.delete(vnode.id)
+				.then(() => {
+					Movie.loadList()
+					m.route.set('/list')
+				})
 		}
 	}
 })

@@ -1,4 +1,4 @@
-var url = 'http://localhost:3030/movies'
+var url = 'https://protected-river-48780.herokuapp.com/movies'
 var m = require('mithril')
 
 var Movie = {

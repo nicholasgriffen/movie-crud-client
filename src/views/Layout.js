@@ -5,7 +5,7 @@ module.exports = {
 		return m('main.layout', [
 			m('nav.menu', [
 				m('a[href="/list"]', { oncreate: m.route.link }, 'Movies'),
-				m('a[href="/create"]', { oncreate: m.route.link }, 'Create')
+				m('a[href="/create"]', { oncreate: m.route.link }, 'Create'),
 			]),
 			m('section', vnode.children)
 		])
