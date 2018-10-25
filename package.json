@@ -7,13 +7,12 @@
         "build": "webpack src/index.js --output bin/app.js -p",
         "start": "webpack src/index.js --output bin/app.js -d --watch",
         "heroku-postbuild": "webpack -p",
-        "dev": "lite-server",
-        "test": "mocha --watch"
+        "dev": "lite-server"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "eslint": "^5.7.0",
+        "eslint": "^5.7.0"
     },
     "dependencies": {
         "webpack": "^4.22.0",
