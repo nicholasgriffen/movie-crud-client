@@ -1,11 +1,9 @@
 {
     "name": "client",
     "version": "0.5.0",
-    "description": "",
-    "main": "/bin/app.js",
     "scripts": {
-        "start": "webpack src/index.js --output bin/app.js -p",
-        "dev-build": "webpack src/index.js --output bin/app.js -d --watch",
+        "build": "webpack src/index.js --output bin/app.js -p",
+        "start": "webpack src/index.js --output bin/app.js -d --watch",
         "heroku-postbuild": "webpack -p",
         "dev": "lite-server"
     },
