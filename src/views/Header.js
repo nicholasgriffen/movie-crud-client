@@ -5,10 +5,10 @@ module.exports = {
 		return [m('header',
 			m('nav.container',
 				m('.row',
-					m('.column.column-center',
+					m('.column',
 						m('a.button[href="/list"]', { oncreate: m.route.link }, 'Movies')
 					),
-					m('.column.column-center',
+					m('.column',
 						m('a.button[href="/create"]', { oncreate: m.route.link }, 'Create')
 					)
 				)
