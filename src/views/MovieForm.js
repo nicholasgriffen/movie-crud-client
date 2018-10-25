@@ -26,35 +26,42 @@ module.exports = {
 					.then(record => m.route.set('/show/' + record.movie.id))
 			}
 		}, [
-			m('label.label', 'Title'),
-			m('input.input[type=text][placeholder="Title"]', {
+			m('label', 'Title'),
+			m('input[type=text][placeholder="Title"][required]', {
 				oninput: m.withAttr('value', function (value) {
 					Movie.current.title = value
 				}),
 				value: Movie.current.title
 			}),
-			m('label.label', 'Director'),
-			m('input.input[type=text][placeholder="Director"]', {
+			m('label', 'Poster URL'),
+			m('input[type=text][placeholder="https://placekitten.com/g/200/300"]', {
+				oninput: m.withAttr('value', function (value) {
+					Movie.current.posterUrl = value
+				}),
+				value: Movie.current.posterUrl
+			}),
+			m('label', 'Director'),
+			m('input[type=text][placeholder="Director"][required]', {
 				oninput: m.withAttr('value', function (value) {
 					Movie.current.director = value
 				}),
 				value: Movie.current.director
 			}),
-			m('label.label', 'Year'),
-			m('input.input[type=text][placeholder="2018"]', {
+			m('label', 'Year'),
+			m('input[type=number][placeholder=2018][required]', {
 				oninput: m.withAttr('value', function (value) {
-					Movie.current.year = +value
+					Movie.current.year = value
 				}),
 				value: Movie.current.year
 			}),
-			m('label.label', 'My Rating'),
-			m('input.input[type=text][placeholder="5"]', {
+			m('label', 'My Rating'),
+			m('input[type=number][placeholder=5][required]', {
 				oninput: m.withAttr('value', function (value) {
-					Movie.current.rating = +value
+					Movie.current.rating = value
 				}),
 				value: Movie.current.rating
 			}),
-			m('button.button[type=submit]', 'Save')
+			m('button[type=submit]', 'Save')
 		])
 	}
 } 

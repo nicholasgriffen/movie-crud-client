@@ -3,33 +3,33 @@ var m = require('mithril')
 var Movie = require('./models/Movie')
 var List = require('./views/MovieList')
 var Form = require('./views/MovieForm')
-var Layout = require('./views/Layout')
+var Header = require('./views/Header')
 var Splash = require('./views/MovieSplash')
 
 m.route(document.body, '/', {
 	'/': {
 		render: function () {
-			return m(Layout)
+			return m(Header)
 		}
 	},
 	'/list': {
 		render: function () {
-			return m(Layout, m(List))
+			return m(Header, m(List))
 		}
 	},
 	'/edit/:id': {
 		render: function (vnode) {
-			return m(Layout, m(Form, vnode.attrs))
+			return m(Header, m(Form, vnode.attrs))
 		}
 	},
 	'/create': {
 		render: function () {
-			return m(Layout, m(Form))
+			return m(Header, m(Form))
 		}
 	},
 	'/show/:id': {
 		render: function (vnode) {
-			return m(Layout, m(Splash, vnode.attrs))
+			return m(Header, m(Splash, vnode.attrs))
 		}
 	},
 	'/delete/:id': {

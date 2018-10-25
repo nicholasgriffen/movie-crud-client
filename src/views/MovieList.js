@@ -1,4 +1,3 @@
-// title, director, year, rating poster url
 var m = require('mithril')
 var Movie = require('../models/Movie')
 module.exports = {

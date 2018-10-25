@@ -6,6 +6,7 @@ module.exports = {
 		var data = Movie.current
 		return m('main',
 			m('h1', data.title),
+			m('p', data.rating),
 			m('p', data.director),
 			m('p', data.year),
 			m(`img[src=${data.posterUrl || 'https://placekitten.com/g/200/300'}]`),
