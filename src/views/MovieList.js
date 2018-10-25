@@ -8,6 +8,7 @@ module.exports = {
 		return m('table',
 			m('thead',
 				m('tr',
+					m('th', 'Rating'),
 					m('th', 'Title'),
 					m('th', 'Year'),
 					m('th', 'Director'),
@@ -16,6 +17,7 @@ module.exports = {
 				)),
 			Movie.list.map(movie => {
 				return m('tr',
+					m('td', `${movie.rating}`),
 					m('td', `${movie.title}`),
 					m('td', `${movie.year}`),
 					m('td', `${movie.director}`),
