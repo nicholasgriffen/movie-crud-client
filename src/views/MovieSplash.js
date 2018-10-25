@@ -6,7 +6,7 @@ module.exports = {
 		var data = Movie.current
 		return m('.container',
 			m('.row',
-				m('column.column-center',
+				m('column',
 					m('h1', data.title)
 				)
 			),
@@ -18,8 +18,8 @@ module.exports = {
 					`${data.director}: ${data.year}`
 				)
 			),
-			m('.row.row-center',
-				m('.column.column-center',
+			m('.row',
+				m('.column',
 					m(`img[src = ${data.posterUrl || 'https://placekitten.com/g/200/300'}]`)
 				)
 			),
