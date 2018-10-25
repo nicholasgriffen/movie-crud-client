@@ -1,15 +1,18 @@
 var m = require('mithril')
 
 var Movie = require('./models/Movie')
-var List = require('./views/MovieList')
-var Form = require('./views/MovieForm')
+
 var Header = require('./views/Header')
+var Home = require('./views/Home')
+var List = require('./views/MovieList')
 var Splash = require('./views/MovieSplash')
+var Form = require('./views/MovieForm')
+
 
 m.route(document.body, '/', {
 	'/': {
 		render: function () {
-			return m(Header)
+			return m(Header, m(Home))
 		}
 	},
 	'/list': {
